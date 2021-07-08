@@ -1,0 +1,52 @@
+<!-- React Function setState -->
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    class FunctionState extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          value: 0,
+        };
+      }
+
+      // setState에서 this.state사용해야 할 경우 비동기이므로 작성한대로 동작을 하지 않을 수 있다.
+      // Fucntion setState를 사용 하자.
+      onClick = (e) => {
+        // this.setState(
+        //   {
+        //     value: ++this.state.value
+        //   }
+        // );
+
+        this.setState((prevState) => {
+          return{
+            value: ++prevState.value
+          }
+        });
+      }
+      
+      render() {
+        return (
+          <React.Fragment>
+              <button onClick={this.onClick}>{this.state.value}</button>
+          </React.Fragment>
+        );
+      }
+    }
+  </script>
+  <script type="text/babel">
+    ReactDOM.render(<FunctionState />, document.querySelector('#root'));
+  </script>
+</body>
+
+</html>
