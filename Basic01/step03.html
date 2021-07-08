@@ -1,0 +1,38 @@
+<!-- JSX, Babel -->
+<!-- JSX : JS + XML, VirtualDOM Use To Easy -->
+<!-- Babel : JavaScript Compiler, Use JSX -->
+<html>
+  <head>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+      <div id="root"></div> 
+      <script type="text/babel">
+      
+        class ReactButton extends React.Component {
+          constructor(props) {
+            super(props);
+            this.state = {
+              clicked : false
+            };
+          }
+            render() {
+              // JSX (JS + XML)
+              return <button type="submit" onClick={() => {this.setState({ clicked: true})}}>
+              {this.state.clicked === true ? 'clicked' : 'click'}
+              </button>
+              // return e(
+              //   'button',
+              //   { onClick: () => { this.setState({clicked : true})}, type: 'submit' },
+              //   this.state.clicked === true ? 'clicked' : 'click');             
+            }
+          }
+      </script>
+      <script type="text/babel">
+        ReactDOM.render(<ReactButton/>, document.querySelector('#root'));
+        //ReactDOM.render(e(ReactButton), document.querySelector('#root'));
+      </script>
+  </body>    
+</html>
