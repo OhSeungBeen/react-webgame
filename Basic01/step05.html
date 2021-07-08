@@ -1,0 +1,52 @@
+<!-- Ref -->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    class Ref extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          inputNumber: '',
+          result: '',
+        };
+      }
+
+      onSubmit = (e) => {
+        e.preventDefault();
+        // Use Input Tag
+        this.input.focus();
+      }      
+      onChange = (e) => {
+        this.setState({ inputNumber: e.target.value });
+      }
+      
+      // InputTag Ref 변수 및 함수 선언
+      input;
+      onRefInpt = (c) => {this.input = c;};
+
+      render() {
+        return (
+          <React.Fragment>
+            <form onSubmit={this.onSubmit}>
+              <input ref={this.onRefInpt} type="number" value={this.state.inputNumber} onChange={this.onChange} />
+              <button>Focus</button>
+            </form>
+          </React.Fragment>
+        );
+      }
+    }
+  </script>
+  <script type="text/babel">
+    ReactDOM.render(<Ref />, document.querySelector('#root'));
+  </script>
+</body>
+
+</html>
