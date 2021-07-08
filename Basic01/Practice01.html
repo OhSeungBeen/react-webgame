@@ -1,0 +1,77 @@
+<!-- React State practice -->
+<!-- Multiplication Quiz -->
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    class MultiplicationQuiz extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          firstNumber: Math.ceil(Math.random() * 9),
+          secondNumber: Math.ceil(Math.random() * 9),
+          inputNumber: '',
+          result: '',
+        };
+      }
+
+      // 함수를 분리할 경우 기본 Function 사용 시 this가 달라지므로 Errow Function을 사용 한다.
+      onSubmit = (e) => {
+        e.preventDefault();
+        // correct
+        if (parseInt(this.state.inputNumber) === this.state.firstNumber * this.state.secondNumber) {
+          this.setState({
+            result: this.state.inputNumber + ' correct',
+            firstNumber: Math.ceil(Math.random() * 9),
+            secondNumber: Math.ceil(Math.random() * 9),
+            inputNumber: '',
+          });
+
+        // incorrect
+        } else {
+          this.setState({
+            result: this.state.inputNumber + ' inCorrect',
+            inputNumber: '',
+          });
+        }
+
+        this.input.focus();
+      }
+      
+      onChange = (e) => {
+        this.setState({ inputNumber: e.target.value });
+      }
+      
+      input;
+      onRefInput = (c) => {
+        this.input = c;
+      }
+
+      render() {
+        return (
+          <React.Fragment>
+            {this.state.firstNumber} X {this.state.secondNumber} ?
+            <form onSubmit={this.onSubmit}>
+              <input ref={this.onRefInput} type="number" value={this.state.inputNumber} onChange={this.onChange} />
+              <button>Input</button>
+            </form>
+              <div>{this.state.result}</div>
+          </React.Fragment>
+        );
+      }
+    }
+  </script>
+  <script type="text/babel">
+    ReactDOM.render(<MultiplicationQuiz />, document.querySelector('#root'));
+  </script>
+</body>
+
+</html>
