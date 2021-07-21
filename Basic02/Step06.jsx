@@ -13,7 +13,7 @@ const Step05 = () => {
 
   // componentDidMount, componentDidUpdate 역할
   useEffect(() => { 
-    console.log('실행');
+    console.log('useEffect 실행');
     interval.current = setInterval(() => {
       console.log('setInterVal()');
     }, 1000);

@@ -1,4 +1,4 @@
-// React Hokks
+// React Hooks
 // useMemo, useCallback
 
 // React Hooks 에서Coponent가 렌더링 될 때 내부에 선언되어 있던
