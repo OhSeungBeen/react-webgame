@@ -1,5 +1,5 @@
 // React Hooks
-// UseEffect
+// useEffect
 
 import React, { Component, useState, useRef, useEffect } from 'react'
 
