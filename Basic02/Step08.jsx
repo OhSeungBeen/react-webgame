@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-// Action
+// action
 // 상태에 어떤 변화가 필요하면 Action 발생
 // 객체로 표현된다.
 // {
@@ -13,21 +13,21 @@ import React, { Component } from 'react';
 //     }
 // }
 
-// Action Create Function
+// action Create Function
 function addTodo(data) {
   return {
     type: 'ADD_TODO',
     data,
   };
 }
-// Action Create Arrow Function
+// action Create Arrow Function
 const addTodo2 = (data) => {
   {
     type: 'ADD_TODO2', data;
   }
 };
 
-// Reducer
+// reducer
 // 변화를 일으키는 함수이다.
 // 액션을 만들어서 발생시키면 리듀서가 현재state와 전달받은 액션 객체를 파라미터로 받아온다.
 // 두값을 참고하여 새로운 state를 생성하여 반환한다.
